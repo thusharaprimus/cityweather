@@ -1,3 +1,19 @@
-<h1>
-  {{title}}
-</h1>
+<div>
+  <md-toolbar color="primary">
+    <h2>City Weather</h2>
+  </md-toolbar>
+  <md-card>
+   <form class="form-wrapper">
+     <input type="text" [value]="city" (input)="city = $event.target.value" id="search" placeholder="Enter the city.." required>
+     <button md-raised-button color="primary" (click)="sub(city)">Search</button>
+   </form>   
+  </md-card>
+  <md-card>
+    <h3>{{ geocoded.formatted_address }} </h3>
+    <div *ngIf="weather">
+      <h3>Temperature:{{weather.current.temp_c}}°C</h3>
+      <h3>Cloud:{{weather.current.cloud}}</h3>
+      <h3>{{weather.current.condition.text}}</h3>
+    </div>
+  </md-card>
+</div>
